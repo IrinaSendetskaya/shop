@@ -8,13 +8,13 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ProductService {
-  productUrl='../../assets/mock-data/products.json';
+  productUrl = '../../assets/mock-data/products.json';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getAllProducts():Observable<Product[]>{
+  getAllProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.productUrl).pipe(
-      map(data=>{
+      map(data => {
         return data;
       })
     );

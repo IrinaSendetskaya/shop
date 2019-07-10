@@ -16,7 +16,7 @@ export class ProductListComponent implements OnInit {
     this.productService.getAllProducts().subscribe(products => this.products = products);
   }
 
-  onBuy():void{
+  onBuy(): void {
     console.log('Buy');
   }
 

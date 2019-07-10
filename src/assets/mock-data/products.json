@@ -1,24 +1,26 @@
-[{
-    "id":1,
-    "name":"phone 2",
-    "description":"sdgdfhd",
-    "price":12,
-    "category":"Category.MOBILE",
-    "isAvailable":true
-},{
-    "id":2,
-    "name":"audi 3",
-    "description":"ssgfsgbgdfhd",
-    "price":123,
-    "category":"Category.CAR",
-    "isAvailable":true
-},
-{
-    "id":3,
-    "name":"joy 3",
-    "description":"gdbsdngd",
-    "price":44,
-    "category":"Category.CHILDREN",
-    "isAvailable":false
-}
+[
+    {
+        "id": 1,
+        "name": "phone 2",
+        "description": "sdgdfhd",
+        "price": 12,
+        "category": "Category.MOBILE",
+        "isAvailable": true
+    },
+    {
+        "id": 2,
+        "name": "audi 3",
+        "description": "ssgfsgbgdfhd",
+        "price": 123,
+        "category": "Category.CAR",
+        "isAvailable": true
+    },
+    {
+        "id": 3,
+        "name": "joy 3",
+        "description": "gdbsdngd",
+        "price": 44,
+        "category": "Category.CHILDREN",
+        "isAvailable": false
+    }
 ]
