@@ -8,15 +8,16 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ProductService {
-  productUrl = '../../assets/mock-data/products.json';
+  private productUrl = '../../assets/mock-data/products.json';
 
   constructor(private http: HttpClient) { }
 
   getAllProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.productUrl).pipe(
-      map(data => {
-        return data;
-      })
+      // думаю, этот оператор ничего не делает
+      // map(data => {
+      //   return data;
+      // })
     );
   }
 }
