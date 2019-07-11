@@ -7,7 +7,7 @@ import { Product } from 'src/app/products/models/product';
   providedIn: 'root'
 })
 export class CartService {
-  productUrl = '../../assets/mock-data/productsBuyed.json';
+  private productUrl = '../../assets/mock-data/productsBuyed.json';
 
   constructor(private http: HttpClient) { }
 
