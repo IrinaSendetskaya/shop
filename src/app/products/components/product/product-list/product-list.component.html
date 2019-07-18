@@ -2,7 +2,7 @@
 <div class="product-list">
   <ul *ngFor="let product of products">
     <li>
-      {{ product.category }}
+      {{ product?.category }}
       <app-product [product]="product" (clickBuy)="onBuy($event)">
       </app-product>
     </li>

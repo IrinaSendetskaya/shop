@@ -1,8 +1,8 @@
 <p>Cart</p>
 <div *ngIf='isEmptyCart;else elseBlock'>
     <ul *ngFor='let product of products'>
-        <li>{{product?.name}}</li>
-        <li>{{product?.price}}</li>
+            <app-cart-item [product]='product'>
+    </app-cart-item>
     </ul>
 </div>
 <ng-template #elseBlock>

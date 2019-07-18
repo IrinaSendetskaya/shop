@@ -1,3 +1,3 @@
 <li>{{ product?.name }}</li>
 <li>{{ product?.price }}</li>
-<button [ngClass]="isAvailableBuy" (click)="buy()">Buy</button>
+<button disabled="!isAvailableBuy" (click)="buy()">Buy</button>
