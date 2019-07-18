@@ -1,6 +1,8 @@
 <p>product-list</p>
 <ul *ngFor='let product of products'>
-    <li>{{product?.name}}</li>
-    <li>{{product?.price}}</li>
-    <button (click)='onBuy()'>Buy</button>
+    <app-product >
+        <li [productName]>{{product?.name}}</li>
+        <li [productPrice]> {{product?.price}}</li>
+        <button *ngIf='isAvailableBuy' (click)='buy()'>Buy</button>
+    </app-product>
 </ul>

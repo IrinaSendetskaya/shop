@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/app/products/models/product';
 import { ProductService } from 'src/app/products/services/product.service';
 
@@ -9,6 +9,8 @@ import { ProductService } from 'src/app/products/services/product.service';
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
+  productSelected: Product;
+  isAvailableBuy: boolean = true;
 
   constructor(private productService: ProductService) { }
 
@@ -17,7 +19,12 @@ export class ProductListComponent implements OnInit {
   }
 
   onBuy(): void {
-    console.log('Buy');
+    if (this.productSelected.isAvailable) {
+      console.log('Buy');
+    } else {
+      this.isAvailableBuy = false;
+    }
+
   }
 
 }

@@ -1,4 +1,4 @@
-import { Category } from 'src/app/shared/enums/category';
+import { Category } from 'src/app/products/models/category';
 
 export interface Product {
     id?: number;
