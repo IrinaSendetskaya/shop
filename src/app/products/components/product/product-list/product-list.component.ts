@@ -1,6 +1,8 @@
-import { Component, OnInit} from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Product } from "src/app/products/models/product";
 import { ProductService } from "src/app/products/services/product.service";
+import { ReplaySubject } from "rxjs";
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: "app-product-list",
@@ -8,25 +10,26 @@ import { ProductService } from "src/app/products/services/product.service";
   styleUrls: ["./product-list.component.scss"]
 })
 export class ProductListComponent implements OnInit {
-  products: Product[] = [];
-  productSelected: Product;
-  isAvailableBuy: boolean = true;
+  public products: Product[] = [];
+  public isAvailableBuy: boolean = true;
+
+  private destroyedSource: ReplaySubject<boolean> = new ReplaySubject<boolean>(
+    1
+  );
 
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
-    console.log("OnInit");
     this.productService
-      .getAllProducts()
+      .getAllProducts().pipe(
+        takeUntil(this.destroyedSource)
+      )
       .subscribe(products => (this.products = products));
-      console.log(this.products);
   }
 
-  onBuy(message:string): void {
-    if (this.productSelected.isAvailable) {
-      console.log("Buy"+message);
-    } else {
-      this.isAvailableBuy = false;
-    }
+  onBuy(message: string): void {
+    console.log(message);
+
+    this.isAvailableBuy = false;
   }
 }

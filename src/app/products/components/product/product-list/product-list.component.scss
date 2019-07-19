@@ -1,0 +1,12 @@
+.product-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .product-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 4px double black;
+  }
+}

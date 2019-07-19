@@ -1,4 +1,13 @@
-<p>cart-item works!</p>
+<div
+  [ngClass]="{
+    content: isAvailableBuy,
+    'content-grab': currentUser && currentUser.head
+  }"
+></div>
 
-<li>{{product?.name}}</li>
-<li>{{product?.price}}</li>
+<div class="cart-item" *ngIf="product">
+  <div>{{ product?.name }}</div>
+  <div>{{ product?.price }}</div>
+  <button class="cart-button_update" (click)="update()">Update</button>
+  <button class="cart-button_delete" (click)="delete()">Delete</button>
+</div>

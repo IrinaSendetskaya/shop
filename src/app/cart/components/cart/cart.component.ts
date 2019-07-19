@@ -1,26 +1,39 @@
-import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/products/models/product';
-import { CartService } from '../../services/cart.service';
+import { Component, OnInit } from "@angular/core";
+import { Product } from "src/app/products/models/product";
+import { CartService } from "../../services/cart.service";
+import { ReplaySubject } from "rxjs";
+import { takeUntil } from "rxjs/operators";
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  selector: "app-cart",
+  templateUrl: "./cart.component.html",
+  styleUrls: ["./cart.component.scss"]
 })
 export class CartComponent implements OnInit {
-  products: Product[] = [];
-  isEmptyCart: boolean;
+  public products: Product[] = [];
+  public isEmptyCart: boolean;
 
-  constructor(private cartService: CartService) { }
+  private destroyedSource: ReplaySubject<boolean> = new ReplaySubject<boolean>(
+    1
+  );
+
+  constructor(private cartService: CartService) {}
 
   ngOnInit() {
-    this.cartService.getAllProducts().subscribe(products => {
-      this.products = products;
-      console.log(this.products);
-      this.isEmptyCart = products.length > 0 ? true : false;
-      console.log(this.isEmptyCart);
-    });
-
+    this.cartService
+      .getAllProducts()
+      .pipe(takeUntil(this.destroyedSource))
+      .subscribe(products => {
+        this.products = products;
+        this.isEmptyCart = products.length > 0 ? true : false;
+      });
   }
 
+  onUpdate(message:string):void{
+    console.log(message);
+  }
+
+  onDelete(message:string):void{
+    console.log(message);
+  }
 }

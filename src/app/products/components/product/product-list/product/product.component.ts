@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges, SimpleChange } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from "@angular/core";
 import { Product } from "src/app/products/models/product";
 import { ProductListComponent } from "../product-list.component";
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: "app-product",
@@ -14,20 +15,21 @@ export class ProductComponent extends ProductListComponent implements OnInit, On
   
   @Output() clickBuy: EventEmitter<string> = new EventEmitter<string>();
 
+  private $product = new BehaviorSubject<Product>(undefined);
+
   ngOnInit() {
     this.isAvailableBuy=this.product.isAvailable;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    const name: SimpleChange = changes.name;
-    //console.log('prev value: ', name.previousValue);
-    console.log('got name: ', name.currentValue);
-    //this._name = name.currentValue.toUpperCase();
+    if (changes.product) {
+      this.$product.next(this.product);
+    }
   }
 
   buy(): void {
     if (this.product && this.isAvailableBuy) {
-      this.clickBuy.emit();
+      this.clickBuy.emit('Buy');
     }
   }
 }

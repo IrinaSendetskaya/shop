@@ -1,0 +1,11 @@
+.product-item:only-child {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 10px;
+}
+
+.product-item-detail,
+.product-button_buy {
+  padding: 10px;
+}
