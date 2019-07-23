@@ -22,6 +22,8 @@ export class ProductListComponent implements OnInit {
   ngOnInit() {
     this.productService
       .getAllProducts().pipe(
+        // destroyedSource - не выполняет же метод next()
+        // отписка не происходит?
         takeUntil(this.destroyedSource)
       )
       .subscribe(products => (this.products = products));
