@@ -1,6 +1,7 @@
 <p>product-list</p>
 
 <div *ngFor="let product of products" class="product-list">
+  <!-- [id] такого инпута нет у компонента -->
   <app-product
     class="product-item"
     [product]="product"
