@@ -1,0 +1,9 @@
+.cart-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.cart-item-detail,.cart-button_update,.cart-button_delete{
+    padding: 10px;
+    margin:10px;
+}
