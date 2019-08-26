@@ -1,10 +1,11 @@
 <p>product-list</p>
 
-<div *ngFor="let product of products" class="product-list">
+<div *ngFor="let product of products | async" class="product-list">
   <app-product
     class="product-item"
     [product]="product"
     (clickBuy)="onBuy($event)"
+    (editProduct)="onEditProduct($event)"
     [id]="product.id"
   >
   </app-product>

@@ -1,0 +1,19 @@
+<div class="panel panel-default" *ngIf="product">
+  <div class="panel-heading">Product</div>
+  <div class="panel-body">
+    <ul>
+      <li>Action: {{ product?.name }}</li>
+      <li>Action: {{ product?.price }}</li>
+    </ul>
+    <button
+      class="btn btn-primary btn-sm"
+      [disabled]="product.isAvailable"
+      (click)="onBuy()"
+    >
+      Buy
+    </button>
+    <button class="btn btn-warning btn-sm" (click)="onEditProduct()">
+      Edit
+    </button>
+  </div>
+</div>
