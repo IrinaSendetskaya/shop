@@ -1,15 +1,23 @@
 <div class="container">
-  
   <a class="navbar-brand" href="#" routerLink="/home">Products Manager</a>
   <a href="#" routerLink="/about" routerLinkActivate="active">About</a>
-
-  <router-outlet
-    #routerOutlet="outlet"
-    (activate)="onActivate($event, routerOutlet)"
-    (deactivate)="onDeactivate($event, routerOutlet)"
-  ></router-outlet>
-
-  <app-product-list></app-product-list>
+  <div class="col-md-10">
+    <router-outlet
+      #routerOutlet="outlet"
+      (activate)="onActivate($event, routerOutlet)"
+      (deactivate)="onDeactivate($event, routerOutlet)"
+    ></router-outlet>
+  </div>
   <hr />
-  <app-cart></app-cart>
+  <!-- <app-cart></app-cart> -->
+  <div class="col-md-2">
+    <button
+      class="btn btn-success"
+      *ngIf="!messagesService.isDisplayed"
+      (click)="onDisplayMessages()"
+    >
+      Show Messages
+    </button>
+    <router-outlet name="messages"></router-outlet>
+  </div>
 </div>

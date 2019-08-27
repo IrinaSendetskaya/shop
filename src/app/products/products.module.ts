@@ -3,13 +3,17 @@ import { CommonModule } from "@angular/common";
 
 import { FormsModule } from "@angular/forms";
 
-import { ProductComponent, ProductListComponent } from "./components";
+import {
+  ProductComponent,
+  ProductListComponent,
+  ProductFormComponent
+} from "./components";
 
 import { ProductsRoutingModule } from "./products-routing.module";
 import { ProductsServicesModule } from "./products-services.module";
 
 @NgModule({
-  declarations: [ProductComponent, ProductListComponent],
+  declarations: [ProductComponent, ProductListComponent, ProductFormComponent],
   imports: [
     CommonModule,
     FormsModule,

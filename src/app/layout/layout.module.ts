@@ -3,11 +3,13 @@ import { CommonModule } from "@angular/common";
 
 import {
   AboutComponent,
-  PathNotFoundComponent
+  PathNotFoundComponent,
+  MessagesComponent
 } from "./components";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
-  declarations: [AboutComponent, PathNotFoundComponent],
-  imports: [CommonModule]
+  declarations: [AboutComponent, PathNotFoundComponent, MessagesComponent],
+  imports: [CommonModule, FormsModule]
 })
 export class LayoutModule {}

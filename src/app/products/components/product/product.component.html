@@ -2,8 +2,8 @@
   <div class="panel-heading">Product</div>
   <div class="panel-body">
     <ul>
-      <li>Action: {{ product?.name }}</li>
-      <li>Action: {{ product?.price }}</li>
+      <li>Name: {{ product?.name }}</li>
+      <li>Price: {{ product?.price }}</li>
     </ul>
     <button
       class="btn btn-primary btn-sm"
@@ -12,7 +12,7 @@
     >
       Buy
     </button>
-    <button class="btn btn-warning btn-sm" (click)="onEditProduct()">
+    <button class="btn btn-warning btn-sm" (click)="onEditProduct(product)">
       Edit
     </button>
   </div>

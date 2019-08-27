@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 import { ProductsService } from "src/app/products/services/products.service";
 import { ProductModel } from "src/app/products/models/product.model";
@@ -12,7 +13,10 @@ export class ProductListComponent implements OnInit {
   public products: Promise<ProductModel[]>;
   public isAvailableBuy: boolean = true;
 
-  constructor(private productService: ProductsService) {}
+  constructor(
+    private router: Router,
+    private productService: ProductsService
+  ) {}
 
   ngOnInit() {
     this.products = this.productService.getAllProducts();
@@ -23,5 +27,8 @@ export class ProductListComponent implements OnInit {
     this.productService.updateProduct(updateProduct);
     //this.isAvailableBuy = false;
   }
-  onEditProduct(product: ProductModel): void {}
+  onEditProduct(product: ProductModel): void {
+    const link = ["edit", product.id];
+    this.router.navigate(link);
+  }
 }
