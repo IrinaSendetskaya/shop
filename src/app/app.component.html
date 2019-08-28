@@ -1,6 +1,11 @@
 <div class="container">
-  <a class="navbar-brand" href="#" routerLink="/home">Products Manager</a>
-  <a href="#" routerLink="/about" routerLinkActivate="active">About</a>
+  <div>
+    <ul class="nav navbar-nav">
+      <li class="navbar-brand" href="#" routerLink="/home">Products Manager</li>
+      <li href="#" routerLink="/about" routerLinkActivate="active">About</li>
+      <li  href="#" routerLinkActive="active" routerLink="/cart">Cart</li>
+    </ul>
+  </div>
   <div class="col-md-10">
     <router-outlet
       #routerOutlet="outlet"

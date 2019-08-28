@@ -1,0 +1,13 @@
+<div *ngIf="isEmptyCart; else elseBlock">
+  <app-cart-item
+    *ngFor="let product of products"
+    class="cart-item"
+    [product]="product"
+    (buyCart)="onBuy($event)"
+    (editCart)="onEdit($event)"
+  >
+  </app-cart-item>
+</div>
+<ng-template #elseBlock class="cart-empty">
+  <div>Cart is empty!</div>
+</ng-template>

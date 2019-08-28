@@ -12,6 +12,14 @@ const routes: Routes = [
     component: AboutComponent
   },
   {
+    path: "cart",
+    loadChildren: () => import("./cart/cart.module").then(m => m.CartModule),
+    data: {
+      preload: true,
+      title: "Cart"
+    }
+  },
+  {
     path: "messages",
     component: MessagesComponent,
     outlet: "messages"
