@@ -2,8 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Product } from "src/app/products/models/product";
 import { CartService } from "../../services/cart.service";
 import { ReplaySubject } from "rxjs";
-import { takeUntil } from "rxjs/operators";
-import { Router, ActivatedRoute } from "@angular/router";
+import { takeUntil, switchMap } from "rxjs/operators";
+import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 
 @Component({
   selector: "app-cart",
@@ -13,6 +13,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class CartListComponent implements OnInit {
   public products: Product[] = [];
   public isEmptyCart: boolean;
+  private editedProduct:Product;
 
   private destroyedSource: ReplaySubject<boolean> = new ReplaySubject<boolean>(
     1
@@ -32,6 +33,23 @@ export class CartListComponent implements OnInit {
         this.products = products;
         this.isEmptyCart = products.length > 0 ? true : false;
       });
+
+      this.route.paramMap.pipe(
+        switchMap((params:ParamMap)=>
+        this.cartService.getProductById(+params.get('editedProductID')))
+      ).subscribe(
+        (product:Product)=>{
+          this.editedProduct={...product};
+        },
+        err=>console.log(err)
+      )
+  }
+
+  isEdited(product:Product):boolean{
+    if(this.editedProduct){
+      return product.id===this.editedProduct.id;
+    }
+    return false;
   }
 
   onBuy(message: string): void {
@@ -39,7 +57,7 @@ export class CartListComponent implements OnInit {
   }
 
   onEdit(product: Product): void {
-    const link = ["/cart/edit", product.id];
+    const link = ["/carts/edit", product.id];
     this.router.navigate(link);
     // or
     // const link = ['edit', product.id];

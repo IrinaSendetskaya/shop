@@ -2,6 +2,7 @@
   <app-cart-item
     *ngFor="let product of products"
     class="cart-item"
+    [class.edited]="isEdited(product)"
     [product]="product"
     (buyCart)="onBuy($event)"
     (editCart)="onEdit($event)"

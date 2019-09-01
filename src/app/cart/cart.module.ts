@@ -6,9 +6,10 @@ import { CartRoutingModule } from "./cart-routing.module";
 
 import { CartItemComponent } from "./components";
 import { CartServicesModule } from "./cart-services.module";
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [CartRoutingModule.components, CartItemComponent],
-  imports: [CommonModule, FormsModule, CartRoutingModule, CartServicesModule]
+  imports: [CommonModule, FormsModule, RouterModule, CartRoutingModule, CartServicesModule]
 })
-export class CartModule {}
+export class CartModule { }

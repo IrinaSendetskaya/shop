@@ -2,14 +2,13 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import {
   CartFormComponent,
-  CartListComponent,
-  CartItemComponent
+  CartListComponent
 } from "./components";
 import { CartsComponent } from "./carts.component";
 
 const routes: Routes = [
   {
-    path: "",
+    path: "carts",
     component: CartsComponent,
     children: [
       {

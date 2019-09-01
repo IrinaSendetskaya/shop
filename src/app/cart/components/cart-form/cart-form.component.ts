@@ -41,11 +41,12 @@ export class CartFormComponent implements OnInit {
 
     if (product.id) {
       this.cartService.updateProduct(product);
+      this.router.navigate(['/carts', {editedProductID:product.id}]);
     } else {
       this.cartService.addProduct(product);
+      this.onGoBack();
     }
     this.originalProduct = { ...this.product };
-    this.onGoBack();
   }
 
   onGoBack() {

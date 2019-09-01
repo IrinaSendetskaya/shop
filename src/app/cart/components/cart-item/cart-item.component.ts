@@ -25,14 +25,11 @@ export class CartItemComponent implements OnInit {
   ngOnInit() {}
 
   public onBuy() {
-    if (this.product && this.product.isAvailable) {
       this.buyCart.emit("Buyed " + this.product.name);
-    }
   }
 
   public onEdit() {
-    if (this.product && this.product.isAvailable) {
       this.editCart.emit(this.product);
-    }
+    
   }
 }

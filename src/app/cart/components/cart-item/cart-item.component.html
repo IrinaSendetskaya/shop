@@ -8,11 +8,11 @@
     <button
       class="btn btn-primary btn-sm"
       [disabled]="product.isAvailable"
-      (click)="onBuy()"
+      (click)="onBuy($event)"
     >
-      In cart
+      Buy
     </button>
-    <button class="btn btn-warning btn-sm" (click)="onEdit()">
+    <button class="btn btn-warning btn-sm" (click)="onEdit($event)">
       Edit
     </button>
   </div>

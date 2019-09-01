@@ -21,4 +21,4 @@ import { ProductsServicesModule } from "./products-services.module";
   ],
   exports: [ProductComponent, ProductListComponent]
 })
-export class ProductsModule {}
+export class ProductsModule { }
