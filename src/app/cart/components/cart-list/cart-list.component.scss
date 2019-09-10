@@ -1,8 +1,5 @@
-.cart-item{
+.cart-item {
     display: flex;
     flex-direction: column;
     border: 4px double black;
-}
-:host.edited>div{
-    border: 2px dotted red;
 }

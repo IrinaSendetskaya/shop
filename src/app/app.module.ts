@@ -12,6 +12,7 @@ import { CartModule } from "./cart/cart.module";
 import { ProductsModule } from "./products/products.module";
 import { SharedModule } from "./shared/shared.module";
 import { LayoutModule } from "./layout/layout.module";
+import { AdminModule } from './admin/admin.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -22,7 +23,8 @@ import { LayoutModule } from "./layout/layout.module";
     ProductsModule,
     SharedModule,
     LayoutModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]
