@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AdminComponent } from './admin.component';
-import { AdminDashboardComponent, ManageTasksComponent, ManageUsersComponent } from './components';
+import { AdminDashboardComponent, ProductsComponent, OrdersComponent,AddComponent,EditComponent } from './components';
+import { AuthGuard } from '../core';
 
 
 
@@ -10,12 +11,15 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
         children: [
-          { path: 'users', component: ManageUsersComponent },
-          { path: 'tasks', component: ManageTasksComponent },
+          { path: 'products', component: ProductsComponent },
+          { path: 'orders', component: OrdersComponent },
+          { path: 'product/add', component: AddComponent },
+          { path: 'product/edit/:id', component: EditComponent },
           { path: '', component: AdminDashboardComponent }
         ]
       }
@@ -32,8 +36,10 @@ export class AdminRoutingModule {
   static components = [
     AdminComponent,
     AdminDashboardComponent,
-    ManageTasksComponent,
-    ManageUsersComponent
+    ProductsComponent,
+    OrdersComponent,
+    AddComponent,
+    EditComponent
   ];
 
 }
