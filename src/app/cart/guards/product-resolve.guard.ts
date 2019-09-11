@@ -3,11 +3,12 @@ import { Router, Resolve, ActivatedRouteSnapshot } from '@angular/router';
 
 // rxjs
 import { Observable, of } from 'rxjs';
-import { map, catchError, take } from 'rxjs/operators';
+import { map, catchError, take, delay, finalize } from 'rxjs/operators';
 
 import { Product } from 'src/app/products/models/product';
 import { CartServicesModule } from '../cart-services.module';
 import { CartService } from '../services';
+import { SpinnerService } from 'src/app/widgets';
 
 
 @Injectable({
@@ -16,6 +17,7 @@ import { CartService } from '../services';
 export class ProductResolveGuard implements Resolve<Product> {
   constructor(
     private cartService: CartService,
+    private spinner: SpinnerService,
     private router: Router
   ) {}
 
@@ -25,10 +27,11 @@ export class ProductResolveGuard implements Resolve<Product> {
     if (!route.paramMap.has('productID')) {
       return of();
     }
-
+    this.spinner.show();
     const id = +route.paramMap.get('productID');
 
     return this.cartService.getProductById(id).pipe(
+      delay(2000),
       map((product: Product) => {
         if (product) {
           return product;
@@ -41,7 +44,8 @@ export class ProductResolveGuard implements Resolve<Product> {
       catchError(() => {
         this.router.navigate(['carts']);
         return of(null);
-      })
+      }),
+      finalize(() => this.spinner.hide())
     );
   }
 }

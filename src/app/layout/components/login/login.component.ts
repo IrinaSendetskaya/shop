@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { AuthService } from 'src/app/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
@@ -36,7 +36,11 @@ export class LoginComponent implements OnInit {
           this.setMessage();
           if (this.authService.isLoggedIn) {
             const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/admin';
-            this.router.navigate([redirect]);
+            const navigationExtras: NavigationExtras = {
+              queryParamsHandling: 'preserve',  
+              preserveFragment: true
+            };    
+            this.router.navigate([redirect],navigationExtras);
           }
         },
         err => console.log(err),

@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { RouterOutlet, Router } from "@angular/router";
 import { MessagesService } from "./shared";
+import { SpinnerService } from './widgets';
 
 @Component({
   selector: "app-root",
@@ -12,6 +13,7 @@ export class AppComponent {
 
   constructor(
     public messagesService: MessagesService,
+    public spinnerService: SpinnerService,
     private router: Router
   ) {}
 

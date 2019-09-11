@@ -13,6 +13,7 @@ import { ProductsModule } from "./products/products.module";
 import { SharedModule } from "./shared/shared.module";
 import { LayoutModule } from "./layout/layout.module";
 import { AdminModule } from './admin/admin.module';
+import { SpinnerModule } from './widgets/spinner/spinner.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -23,8 +24,10 @@ import { AdminModule } from './admin/admin.module';
     ProductsModule,
     SharedModule,
     LayoutModule,
+    SpinnerModule.forRoot(),
+    AdminModule,
     AppRoutingModule,
-    AdminModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
