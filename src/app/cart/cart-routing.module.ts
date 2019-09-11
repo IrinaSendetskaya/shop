@@ -5,6 +5,8 @@ import {
   CartListComponent
 } from "./components";
 import { CartsComponent } from "./carts.component";
+import { CanDeactivateGuard } from '../core';
+import { ProductResolveGuard } from './guards';
 
 const routes: Routes = [
   {
@@ -17,7 +19,12 @@ const routes: Routes = [
       },
       {
         path: "edit/:productID",
-        component: CartFormComponent
+        component: CartFormComponent,
+        canDeactivate: [CanDeactivateGuard],
+        resolve: {
+          product: ProductResolveGuard
+        }
+
       },
       {
         path: "",

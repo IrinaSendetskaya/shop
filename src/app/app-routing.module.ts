@@ -3,13 +3,18 @@ import { Routes, RouterModule } from "@angular/router";
 import {
   AboutComponent,
   PathNotFoundComponent,
-  MessagesComponent
+  MessagesComponent,
+  LoginComponent
 } from "./layout";
 
 const routes: Routes = [
   {
     path: "about",
     component: AboutComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: "cart",
@@ -39,4 +44,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

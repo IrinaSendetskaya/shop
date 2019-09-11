@@ -4,12 +4,13 @@ import { CommonModule } from "@angular/common";
 import {
   AboutComponent,
   PathNotFoundComponent,
-  MessagesComponent
+  MessagesComponent,
+  LoginComponent
 } from "./components";
 import { FormsModule } from "@angular/forms";
 
 @NgModule({
-  declarations: [AboutComponent, PathNotFoundComponent, MessagesComponent],
+  declarations: [AboutComponent, PathNotFoundComponent, MessagesComponent, LoginComponent],
   imports: [CommonModule, FormsModule]
 })
-export class LayoutModule {}
+export class LayoutModule { }

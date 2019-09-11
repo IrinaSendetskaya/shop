@@ -1,8 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { Product } from "src/app/products/models/product";
-import { Subscription } from "rxjs";
+import { Observable } from "rxjs";
 import { CartService } from "../../services";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Router, UrlTree } from "@angular/router";
+import { DialogService } from 'src/app/core';
+import { pluck } from 'rxjs/operators';
 
 @Component({
   selector: "app-cart-form",
@@ -13,27 +15,28 @@ export class CartFormComponent implements OnInit {
   product: Product;
   originalProduct: Product;
 
-  private sub: Subscription;
 
   constructor(
     private cartService: CartService,
     private route: ActivatedRoute,
-    private router: Router
-  ) {}
+    private router: Router,
+    private dialogService: DialogService
+  ) { }
 
   ngOnInit(): void {
-    const id = +this.route.snapshot.paramMap.get("productID");
-    this.sub = this.cartService.getProductById(id).subscribe(
-      product => {
-        this.product = { ...product };
-        this.originalProduct = { ...product };
-      },
-      err => console.log(err)
-    );
-  }
+    // const id = +this.route.snapshot.paramMap.get("productID");
+    // this.sub = this.cartService.getProductById(id).subscribe(
+    //   product => {
+    //     this.product = { ...product };
+    //     this.originalProduct = { ...product };
+    //   },
+    //   err => console.log(err)
+    // );
+    this.route.data.pipe(pluck('product')).subscribe((product: Product) => {
+      this.product = { ...product };
+      this.originalProduct = { ...product };
+    });
 
-  ngOnDestroy() {
-    this.sub.unsubscribe();
   }
 
   onSaveProduct() {
@@ -41,7 +44,7 @@ export class CartFormComponent implements OnInit {
 
     if (product.id) {
       this.cartService.updateProduct(product);
-      this.router.navigate(['/carts', {editedProductID:product.id}]);
+      this.router.navigate(['/carts', { editedProductID: product.id }]);
     } else {
       this.cartService.addProduct(product);
       this.onGoBack();
@@ -52,4 +55,24 @@ export class CartFormComponent implements OnInit {
   onGoBack() {
     this.router.navigate(["./../../"], { relativeTo: this.route });
   }
+
+  canDeactivate():
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
+    const flags = Object.keys(this.originalProduct).map(key => {
+      if (this.originalProduct[key] === this.product[key]) {
+        return true;
+      }
+      return false;
+    });
+
+    if (flags.every(el => el)) {
+      return true;
+    }
+
+    return this.dialogService.confirm('Discard changes?');
+  }
+
 }

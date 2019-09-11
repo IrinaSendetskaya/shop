@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AdminComponent } from './admin.component';
-import { AdminDashboardComponent, ProductsComponent, OrdersComponent,AddComponent,EditComponent } from './components';
+import { AdminDashboardComponent, ProductsComponent, OrdersComponent, AddComponent, EditComponent } from './components';
 import { AuthGuard } from '../core';
 
 
@@ -12,6 +12,7 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: '',

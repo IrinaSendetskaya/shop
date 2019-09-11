@@ -6,17 +6,23 @@
       <li href="#" routerLinkActive="active" routerLink="/carts">Cart</li>
       <li routerLinkActive="active">
         <a routerLink="/admin">Admin</a>
-    </li>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/login">Login</a>
+      </li>
+
     </ul>
   </div>
   <div class="col-md-10">
-    <router-outlet #routerOutlet="outlet" (activate)="onActivate($event, routerOutlet)"
+    <router-outlet #routerOutlet="outlet" (activate)="onActivate($event,
+      routerOutlet)"
       (deactivate)="onDeactivate($event, routerOutlet)"></router-outlet>
   </div>
   <hr />
   <!-- <app-cart></app-cart> -->
   <div class="col-md-2">
-    <button class="btn btn-success" *ngIf="!messagesService.isDisplayed" (click)="onDisplayMessages()">
+    <button class="btn btn-success" *ngIf="!messagesService.isDisplayed"
+      (click)="onDisplayMessages()">
       Show Messages
     </button>
     <router-outlet name="messages"></router-outlet>
