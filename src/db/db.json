@@ -1,0 +1,50 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "phone 2",
+      "description": "sdgdfhd",
+      "price": 12,
+      "category": "Category.MOBILE",
+      "isAvailable": true
+    },
+    {
+      "id": 2,
+      "name": "audi 3",
+      "description": "436",
+      "price": "123",
+      "category": "Category.CAR",
+      "isAvailable": true
+    },
+    {
+      "name": "fdhtsjd",
+      "description": "sfhj",
+      "price": "35346",
+      "id": 3
+    },
+    {
+      "name": "fdhtsjd",
+      "description": "hed",
+      "price": "12",
+      "id": 4
+    }
+  ],
+  "carts": [
+    {
+      "id": 2,
+      "name": "audi 3",
+      "description": "ssgfsgbgdfhd",
+      "price": 123,
+      "category": "Category.CAR",
+      "isAvailable": true
+    },
+    {
+      "id": 3,
+      "name": "joy 3",
+      "description": "gdbsdngd",
+      "price": 44,
+      "category": "Category.CHILDREN",
+      "isAvailable": false
+    }
+  ]
+}

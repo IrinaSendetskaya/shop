@@ -28,6 +28,8 @@ export class ProductComponent extends ProductListComponent
   @Output() editProduct: EventEmitter<ProductModel> = new EventEmitter<
     ProductModel
   >();
+  @Output() deleteProduct = new EventEmitter<Product>();
+
 
   private $product = new BehaviorSubject<Product>(undefined);
 
@@ -47,4 +49,7 @@ export class ProductComponent extends ProductListComponent
   onEdit(): void {
     this.editProduct.emit(this.product);
   }
+  onDeleteProduct() {
+    this.deleteProduct.emit(this.product);
+}
 }

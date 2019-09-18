@@ -8,6 +8,11 @@ const routes: Routes = [
     component: ProductListComponent
   },
   {
+    path: 'add',
+    component: ProductFormComponent
+  },
+
+  {
     path: "edit/:productID",
     component: ProductFormComponent
   }
@@ -17,4 +22,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class ProductsRoutingModule {}
+export class ProductsRoutingModule { }

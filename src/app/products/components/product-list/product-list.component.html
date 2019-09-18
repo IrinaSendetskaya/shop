@@ -1,8 +1,9 @@
-<app-product
-  *ngFor="let product of products | async"
-  class="product-item"
-  [product]="product"
-  (clickBuy)="onBuy($event)"
-  (editProduct)="onEditProduct($event)"
->
-</app-product>
+<div>
+  <button class="btn btn-primary" (click)="onCreateProduct()">New Product</button>
+  <br><br>
+  <app-product *ngFor="let product of products | async" class="product-item" [product]="product"
+    (clickBuy)="onBuy($event)" 
+    (editProduct)="onEditProduct($event)"
+    (deleteProduct)="onDeleteProduct($event)">
+  </app-product>
+</div>
